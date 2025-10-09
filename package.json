@@ -4,8 +4,8 @@
   "description": "Backend del proyecto crudFood",
   "main": "index.js",
   "scripts": {
-    "start":"node index",
-    "dev":"node --env-file .env --watch index"
+    "start": "node index",
+    "dev": "node --env-file .env --watch index"
   },
   "keywords": [
     "rutas",
@@ -19,6 +19,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "mongoose": "^8.19.1",
     "morgan": "^1.10.1"
   }
 }
