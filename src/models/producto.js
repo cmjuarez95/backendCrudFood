@@ -3,22 +3,21 @@ import mongoose, {Schema} from "mongoose";
 const productoSchema = new Schema({
     nombreProducto: {
         type: String,
-        minlenght: 2,
-        maxlenght:100,
+        minlength: 2,
+        maxlength:100,
         required: true,
         unique: true
     },
     precio:{
         type: Number,
         required: true,
-        min: 100,
+        min: 10,
         max: 1000000,
     },
     categoria:{
         type:String,
         required:true,
-        enum:["Acompañamientos,",
-            "Bedbidas",
+        enum:["Acompañamientos",
             "Ensaladas",
             "Hamburguesas",
             "Postres",
@@ -31,14 +30,14 @@ const productoSchema = new Schema({
     descripcion_breve:{
         type: String,
         required:true,
-        minlenght: 5,
-        maxlenght: 250
+        minlength: 5,
+        maxlength: 250
     },
     descripcion_amplia:{
         type: String,
         required:true,
-        minlenght:10,
-        maxlenght:500
+        minlength:10,
+        maxlength:500
     },
 
     imagen:{
