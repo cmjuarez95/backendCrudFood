@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { borrarProductoPorId, listarProductos, obtenerProducto, prueba } from "../controllers/productos.controllers.js"
+import { borrarProductoPorId, editarProductoPorId, listarProductos, obtenerProducto, prueba } from "../controllers/productos.controllers.js"
 import { crearProducto } from "../controllers/productos.controllers.js"
 /*
 GET
@@ -12,6 +12,6 @@ const router = Router()
 
 router.route('/test').get(prueba)
 router.route('/').post(crearProducto).get(listarProductos)
-router.route('/:id').get(obtenerProducto).delete(borrarProductoPorId)
+router.route('/:id').get(obtenerProducto).delete(borrarProductoPorId).put(editarProductoPorId)
 
 export default router
