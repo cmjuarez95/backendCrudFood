@@ -55,13 +55,12 @@ export const obtenerProducto = async (req, res)=>{
 
 export const borrarProductoPorId = async (req, res)=>{
     try {
-        console.log(req.params.id)
-        const productoBuscado = await Producto.findById(req.params.id)
+        const productoBuscado = await Producto.findByIdAndDelete(req.params.id)
+        console.log(productoBuscado)
         if (!productoBuscado) {
             return res.status(404).json({mensaje:"no se encontro el producto"})
         }
         
-        await Producto.findByIdAndDelete(req.params.id)
         res.status(200).json({mensaje:"El producto fue eliminado correctamente"})
 
 
@@ -75,12 +74,11 @@ export const borrarProductoPorId = async (req, res)=>{
 
 export const editarProductoPorId = async (req, res)=>{
     try {
-        const productoBuscado = await Producto.findById(req.params.id)
+        const productoBuscado = await Producto.findByIdAndUpdate(req.params.id, req.body)
         if (!productoBuscado) {
             return res.status(404).json({mensaje:"no se encontro el producto"})
         }
         
-        await Producto.findByIdAndUpdate(req.params.id,req.body)
         res.status(200).json({mensaje:"El producto fue editado correctamente"})
 
 
