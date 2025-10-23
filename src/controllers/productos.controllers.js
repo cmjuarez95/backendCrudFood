@@ -9,7 +9,7 @@ export const crearProducto = async (req, res)=>{
     try {
         //1- Verificar que llegan los datos validados
         //2- Pedir al modelo producto el objeto en la base de datos
-        console.log(req)
+        console.log("body recibido")
         const productoNuevo= new Producto(req.body)
         await productoNuevo.save()  //guarda en la base de datos
         res.status(201).json({mensaje:"el producto fue creado exitosamente"})

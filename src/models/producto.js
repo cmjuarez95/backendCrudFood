@@ -19,6 +19,7 @@ const productoSchema = new Schema({
         required:true,
         enum:["Acompañamientos",
             "Ensaladas",
+            "Bebidas",
             "Hamburguesas",
             "Postres",
             "Pizzas",
