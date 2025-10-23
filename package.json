@@ -4,7 +4,7 @@
   "description": "Backend del proyecto crudFood",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "node index.js",
     "dev": "node --env-file .env --watch index"
   },
   "keywords": [
