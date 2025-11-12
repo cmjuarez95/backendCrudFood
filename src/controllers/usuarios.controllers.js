@@ -5,8 +5,7 @@ import bcrypt from 'bcrypt'
 export const crearUsuario= async (req,res)=>{
     try {
         const saltos = bcrypt.genSaltSync(10)
-        const passwordEncriptado = bcrypt. hashSync(req.body.password, saltos)
-
+        const passwordEncriptado = bcrypt.hashSync(req.body.password, saltos)
         req.body.password= passwordEncriptado
         const usuarioNuevo = new Usuario(req.body)
 
