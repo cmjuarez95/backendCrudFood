@@ -1,32 +1,35 @@
 import express from 'express'
 import cors from 'cors'
-import morgan from "morgan"
-import { dirname } from 'path'
+import morgan from 'morgan'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 import './dbConfig.js'
-//1- Tomar un puerto
-//2- Configurar los middlewares
-//3- usa las rutas
-export default class Server{
-    constructor(){
-        this.app = express()
-        this.port = process.env.PORT || 3001
-        this.middlewares()
-    }
 
-    middlewares(){
-        this.app.use(cors())   //this.app es express, estoy haciendo que use cors que me permite conexiones remotas
-        this.app.use(express.json()) // permite interpretar los datos que lleguen en la solicitud en formato json
-        this.app.use(morgan('dev'))  //nos ofrece datos extra en la terminal
+export default class Server {
+  constructor() {
+    this.app = express()
+    this.port = process.env.PORT || 3001
+    this.middlewares()
+  }
 
-        //configurar un archivo estatico
-        const __dirname = dirname(fileURLToPath(import.meta.url));
-        console.log(__dirname);
-        console.log(__dirname+"../../public");
-        this.app.use(express.static(__dirname+"/../../public"));
-    }
+  middlewares() {
+    this.app.use(cors())
+    this.app.use(express.json())
+    this.app.use(morgan('dev'))
 
-    listen(){
-        this.app.listen(this.port,()=>console.info("El servidor esta ejecutando en: http://localhost:"+this.port))
+    // Archivos estáticos (por si los necesitas en local)
+    const __dirname = dirname(fileURLToPath(import.meta.url))
+    this.app.use(express.static(join(__dirname, '../../public')))
+  }
+
+  // Solo se usa en desarrollo local
+  listen() {
+    if (process.env.VERCEL) {
+      console.log('Ejecutando en entorno Vercel, sin this.app.listen()')
+    } else {
+      this.app.listen(this.port, () =>
+        console.info(`Servidor local en: http://localhost:${this.port}`)
+      )
     }
+  }
 }
