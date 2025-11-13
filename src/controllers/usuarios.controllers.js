@@ -1,6 +1,6 @@
 import generarJWT from "../middleware/generarJWT.js"
 import Usuario from "../models/usuario.js"
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export const crearUsuario= async (req,res)=>{
     try {
