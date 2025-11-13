@@ -2,7 +2,9 @@ import jwt from "jsonwebtoken";
 
 const generarJWT = (usuario, email) => {
   try {
-    console.log("🔹 SECRETJWT:", process.env.SECRETJWT);
+    console.log("🔹 Variables disponibles:", Object.keys(process.env));
+    console.log("🔹 Valor de SECRETJWT:", process.env.SECRETJWT ? "[OK]" : "[NO DEFINIDA]");
+
     const payload = { usuario, email };
 
     if (!process.env.SECRETJWT) {
