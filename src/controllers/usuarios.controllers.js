@@ -56,8 +56,13 @@ export const login = async (req, res)=>{
             
          })
     } catch (error) {
-        console.error(error)
-        res.status(500).json({mensaje: "ocurrio un error al intentar logear un usuario"})
-        
+    console.error("🔴 ERROR EN LOGIN 🔴");
+    console.error("Mensaje:", error.message);
+    console.error("Stack:", error.stack);
+    res.status(500).json({
+      mensaje: "Error en login",
+      error: error.message,
+      stack: error.stack,
+        });
     }
 }
